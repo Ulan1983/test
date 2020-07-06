@@ -10,8 +10,8 @@ const router = express.Router();
 
 router.get('/', auth, async (req, res) => {
 	try {
-		const user = await User.find({_id: req.user._id});
-		res.send(user)
+		const users = await User.find();
+		res.send(users)
 	} catch (error) {
 		return res.status(400).send(error);
 	}
