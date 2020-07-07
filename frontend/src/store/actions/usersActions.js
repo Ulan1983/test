@@ -87,6 +87,9 @@ export const editUser = userData => {
 		try {
 			const response = await axiosApi.put('/users', userData);
 			dispatch(loginUserSuccess(response.data));
+			toast.info('Вы успешно отредактировали свой профиль', {
+				position: toast.POSITION.TOP_RIGHT
+			});
 			dispatch(push('/'));
 		} catch (error) {
 			dispatch(loginUserFailure(error.response.data));
