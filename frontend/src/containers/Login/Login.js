@@ -9,6 +9,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import FormElement from "../../components/UI/Form/FormElement";
 import Button from "@material-ui/core/Button";
 import Alert from "@material-ui/lab/Alert";
+import {NavLink} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -29,6 +30,9 @@ const useStyles = makeStyles({
 	box: {
 		width: '60%',
 		margin: '2% auto'
+	},
+	btn: {
+		width: '30%'
 	}
 });
 
@@ -85,11 +89,17 @@ const Login = () => {
 								/>
 							</Grid>
 							<Grid className={classes.gridBtn}>
-								<Button variant="contained" color="primary" type="submit" id="loginBtn">
+								<Button variant="contained" color="primary"
+										type="submit" id="loginBtn" className={classes.btn}>
 									Войти
 								</Button>
 							</Grid>
 						</form>
+						<Box component="div" m={2}>
+							<Typography className={classes.gridFormElement}>
+								Нет аккаунта? <NavLink to="/register">Регистрация</NavLink>
+							</Typography>
+						</Box>
 						<Box className={classes.box}>
 							{error && (
 								<Alert severity="error">{error.error}</Alert>

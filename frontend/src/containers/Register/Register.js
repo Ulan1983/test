@@ -32,6 +32,9 @@ const useStyles = makeStyles({
 	box: {
 		width: '60%',
 		margin: '2% auto'
+	},
+	btn: {
+		width: '30%'
 	}
 });
 
@@ -107,7 +110,8 @@ const Register = () => {
 								/>
 							</Grid>
 							<Grid className={classes.gridBtn}>
-								<Button variant="contained" color="primary" type="submit" id="registerBtn">
+								<Button variant="contained" color="primary"
+										type="submit" id="registerBtn" className={classes.btn}>
 									Создать аккаунт
 								</Button>
 							</Grid>
