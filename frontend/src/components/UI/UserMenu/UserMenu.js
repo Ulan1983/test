@@ -10,6 +10,7 @@ import Divider from "@material-ui/core/Divider";
 import Avatar from "@material-ui/core/Avatar";
 
 import {logoutUser} from "../../../store/actions/usersActions";
+import {NavLink} from "react-router-dom";
 
 
 
@@ -63,6 +64,8 @@ const UserMenu = () => {
 				onClose={handleClose}
 			>
 				<ListItem disabled>Привет, {user.username}!</ListItem>
+				<Divider/>
+				<MenuItem component={NavLink} to="/profile" onClick={handleClose}>Изменить профиль</MenuItem>
 				<Divider/>
 				<MenuItem onClick={logout}>Выйти</MenuItem>
 			</Menu>
