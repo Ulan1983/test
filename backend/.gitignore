@@ -3,4 +3,3 @@ node_modules
 
 /public/uploads/userAvatar*
 /public/uploads/articleImage*
-!/public/uploads/fixtures/

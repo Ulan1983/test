@@ -23,8 +23,6 @@ router.post('/', upload.single('avatar'), async (req, res) => {
 
 		if (req.file) {
 			userData.avatar = req.file.filename;
-		} else {
-			userData.avatar = 'fixtures/user.png';
 		}
 
 		const user = new User({

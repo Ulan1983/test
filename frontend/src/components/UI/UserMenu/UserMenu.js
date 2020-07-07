@@ -44,7 +44,7 @@ const UserMenu = () => {
 				id='user'
 			>
 				<Avatar
-					src={`http://localhost:8000/uploads/userAvatar/${user.avatar}`}
+					src={user.avatar ? `http://localhost:8000/uploads/userAvatar/${user.avatar}` : ''}
 					alt={user.username}/>
 			</IconButton>
 			<Menu
