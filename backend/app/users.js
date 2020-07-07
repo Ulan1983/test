@@ -97,12 +97,7 @@ router.put('/', auth, upload.single('avatar'), async (req, res) => {
 			user.avatar = userData.avatar
 		}
 
-		if (userData.password) {
-			const salt = await bcrypt.genSalt(10);
-
-			userData.password = await bcrypt.hash(userData.password, salt);
-			await User.updateOne({_id: req.params.id}, {password: userData.password});
-		}
+		user.username = userData.username;
 
 		await user.save();
 		return res.send(user);
