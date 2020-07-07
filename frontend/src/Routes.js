@@ -5,6 +5,7 @@ import Login from "./containers/Login/Login";
 import {useSelector} from "react-redux";
 import MainPage from "./containers/MainPage/MainPage";
 import AppToolbar from "./components/UI/Toolbar/AppToolbar";
+import EditUser from "./containers/EditUser/EditUser";
 
 
 const ProtectedRoute = ({isAllowed, ...props}) => (
@@ -22,6 +23,7 @@ const Routes = () => {
 				<ProtectedRoute isAllowed={user} path="/" exact component={MainPage}/>
 				<Route path="/register" exact component={Register}/> />
 				<Route path="/login" exact component={Login}/> />
+				<ProtectedRoute isAllowed={user} path="/profile" exact component={EditUser}/>
 			</Switch>
 		</>
 	);
