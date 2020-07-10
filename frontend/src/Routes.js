@@ -10,6 +10,7 @@ import UsersList from "./containers/UsersList/UsersList";
 import UserInfo from "./containers/UserInfo/UserInfo";
 import CategoriesList from "./containers/CategoriesList/CategoriesList";
 import CategoryInfo from "./containers/CategoryInfo/CategoryInfo";
+import NewCategory from "./containers/NewCategory/NewCategory";
 
 
 const ProtectedRoute = ({isAllowed, ...props}) => (
@@ -31,6 +32,7 @@ const Routes = () => {
 				<ProtectedRoute isAllowed={user} path="/usersList" exact component={UsersList}/>
 				<ProtectedRoute isAllowed={user} path="/user/:id" exact component={UserInfo}/>
 				<ProtectedRoute isAllowed={user} path="/categories" exact component={CategoriesList}/>
+				<ProtectedRoute isAllowed={user} path="/category/new" exact component={NewCategory}/>
 				<ProtectedRoute isAllowed={user} path="/category/:id" exact component={CategoryInfo}/>
 			</Switch>
 		</>
