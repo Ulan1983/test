@@ -51,6 +51,9 @@ const AppToolbar = () => {
 					<Typography variant="h6" className={classes.title}>
 						<Link to="/" className={classes.mainLink}>News</Link>
 					</Typography>
+					<Typography variant="h6" className={classes.title}>
+						<Link to="/usersList" className={classes.mainLink}>Пользователи</Link>
+					</Typography>
 					<UserMenu/>
 				</Toolbar>
 			</AppBar>}
