@@ -30,26 +30,30 @@ const UsersList = () => {
 	}, [dispatch]);
 
 	return (
-		<Grid item xs={12} sm={6} md={4} className={classes.grid}>
-			{users && users.map(user => (
-				<Card key={user._id} className={classes.root}>
-					<CardContent>
-						<Typography color="textSecondary" gutterBottom>
-							<b>Никнейм: </b>{user.username}
-						</Typography>
-					</CardContent>
-					<CardActions>
-						<Button size="small"
-								component={NavLink} to={`/user/${user._id}`}
-								color="primary"
-								variant="contained"
-						>
-							Просмотр
-						</Button>
-					</CardActions>
-				</Card>
-			))
-			}
+		<Grid container direction="column" spacing={2}>
+			<Grid container>
+				{users && users.map(user => (
+					<Grid item xs={12} sm={6} md={4} className={classes.grid} key={user._id} >
+						<Card className={classes.root}>
+							<CardContent>
+								<Typography color="textSecondary" gutterBottom>
+									<b>Никнейм: </b>{user.username}
+								</Typography>
+							</CardContent>
+							<CardActions>
+								<Button size="small"
+										component={NavLink} to={`/user/${user._id}`}
+										color="primary"
+										variant="contained"
+								>
+									Просмотр
+								</Button>
+							</CardActions>
+						</Card>
+					</Grid>
+				))
+				}
+			</Grid>
 		</Grid>
 	);
 };

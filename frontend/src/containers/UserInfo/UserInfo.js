@@ -17,8 +17,10 @@ const useStyles = makeStyles({
 	root: {
 		minWidth: 275,
 	},
+	card: {
+		textAlign: 'center'
+	},
 	btn: {
-		marginLeft: '2%',
 		marginBottom: '2%'
 	}
 });
@@ -45,7 +47,7 @@ const UserInfo = props => {
 		<>
 			{singleUser &&
 				<Grid item xs={12} lg={9} sm={8} ml={8} className={classes.grid}>
-					<Card>
+					<Card className={classes.card}>
 						<CardContent>
 							<b>Никнейм: </b>{singleUser.username}
 						</CardContent>
