@@ -8,6 +8,8 @@ import AppToolbar from "./components/UI/Toolbar/AppToolbar";
 import EditUser from "./containers/EditUser/EditUser";
 import UsersList from "./containers/UsersList/UsersList";
 import UserInfo from "./containers/UserInfo/UserInfo";
+import CategoriesList from "./containers/CategoriesList/CategoriesList";
+import CategoryInfo from "./containers/CategoryInfo/CategoryInfo";
 
 
 const ProtectedRoute = ({isAllowed, ...props}) => (
@@ -28,6 +30,8 @@ const Routes = () => {
 				<ProtectedRoute isAllowed={user} path="/profile" exact component={EditUser}/>
 				<ProtectedRoute isAllowed={user} path="/usersList" exact component={UsersList}/>
 				<ProtectedRoute isAllowed={user} path="/user/:id" exact component={UserInfo}/>
+				<ProtectedRoute isAllowed={user} path="/categories" exact component={CategoriesList}/>
+				<ProtectedRoute isAllowed={user} path="/category/:id" exact component={CategoryInfo}/>
 			</Switch>
 		</>
 	);
