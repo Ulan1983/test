@@ -11,6 +11,10 @@ import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
+	main: {
+		marginTop: '2%',
+		marginBottom: '2%'
+	},
 	grid: {
 		margin: '0 auto',
 		padding: '10px'
@@ -30,7 +34,10 @@ const CategoriesList = () => {
 	}, [dispatch]);
 
 	return (
-		<Grid container direction="column" spacing={2}>
+		<Grid container direction="column" spacing={2} className={classes.main}>
+			<Button color="primary" component={NavLink} to="/category/new">
+				Добавить категорию
+			</Button>
 			<Grid container>
 				{categories && categories.map(category => (
 					<Grid item xs={12} sm={6} md={4} className={classes.grid} key={category._id} >
