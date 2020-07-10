@@ -6,15 +6,19 @@ import FormElement from "../../components/UI/Form/FormElement";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
+import Alert from "@material-ui/lab/Alert/Alert";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(() => ({
-	box: {
-		textAlign: 'center',
-		marginTop: '3%',
+	grid: {
+		margin: '0 auto',
 	},
-	input: {
-		width: '50%',
-		margin: '0 auto'
+	formElement: {
+		textAlign: 'center',
+	},
+	btn: {
+		textAlign: 'center',
+		marginTop: '8px'
 	}
 }));
 
@@ -23,14 +27,19 @@ const EditUser = () => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
 
-	const [user, setUser] = React.useState(undefined);
+	const [user, setUser] = React.useState({
+		username: '',
+		avatar: ''
+	});
+
+	const error = useSelector(state => state.users.loginError);
 
 	const inputChangeHandler = event => {
 		setUser({...user, [event.target.name]: event.target.value})
 	};
 
 	const fileChangeHandler = event => {
-		setUser({...user, [event.target.name]: event.target.files[0]})
+		setUser({...user, avatar: event.target.files[0]})
 	};
 
 	const onSubmitHandler = event => {
@@ -50,20 +59,20 @@ const EditUser = () => {
 	return (
 		<>
 			{editableUser &&
+				<Container justify="center">
 					<form onSubmit={onSubmitHandler}>
-						<Grid container direction='column' spacing={1} className={classes.box}>
-							<Grid item>
-								<Grid className={classes.input}>
+						<Grid item xs={12} lg={9} sm={8} ml={8} className={classes.grid}>
+							<Grid item className={classes.formElement}>
 									<FormElement
 										id="username"
 										required
 										propertyName='username'
+										value={user.username}
 										title="Изменить имя"
 										onChange={inputChangeHandler}
 									/>
-								</Grid>
 							</Grid>
-							<Grid item>
+							<Grid item className={classes.formElement}>
 								<FormElement
 									propertyName='avatar'
 									title="Выбрать аватар"
@@ -71,7 +80,7 @@ const EditUser = () => {
 									type='file'
 								/>
 							</Grid>
-							<Grid item>
+							<Grid item className={classes.btn}>
 								<Box component="span">
 									<Button
 										variant='contained'
@@ -84,6 +93,16 @@ const EditUser = () => {
 							</Grid>
 						</Grid>
 					</form>
+					<Grid container
+						  justify="center"
+						  alignItems="center">
+						<Box component="span" m={1}>
+							{error && error.errors.username && (
+								<Alert severity="error">{error.errors.username.properties.message}</Alert>
+							)}
+						</Box>
+					</Grid>
+				</Container>
 			}
 		</>
 	);
