@@ -2,6 +2,12 @@ import {push} from "connected-react-router";
 import {toast} from "react-toastify";
 
 import {
+	DELETE_USER_FAILURE,
+	DELETE_USER_SUCCESS,
+	FETCH_USER_FAILURE,
+	FETCH_USER_REQUEST, FETCH_USER_SUCCESS,
+	FETCH_USERS_FAILURE,
+	FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS,
 	LOGIN_USER_FAILURE,
 	LOGIN_USER_REQUEST,
 	LOGIN_USER_SUCCESS, LOGOUT_USER_FAILURE, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS,
@@ -22,6 +28,17 @@ export const loginUserFailure = error => ({type: LOGIN_USER_FAILURE, error});
 export const logoutUserRequest = () => ({type: LOGOUT_USER_REQUEST});
 export const logoutUserSuccess = () => ({type: LOGOUT_USER_SUCCESS});
 export const logoutUserFailure = error => ({type: LOGOUT_USER_FAILURE, error});
+
+export const fetchUsersRequest = () => ({type: FETCH_USERS_REQUEST});
+export const fetchUsersSuccess = users => ({type: FETCH_USERS_SUCCESS, users});
+export const fetchUsersFailure = error => ({type: FETCH_USERS_FAILURE, error});
+
+export const fetchUserRequest = () => ({type: FETCH_USER_REQUEST});
+export const fetchUserSuccess = userData => ({type: FETCH_USER_SUCCESS, userData});
+export const fetchUserFailure = error => ({type: FETCH_USER_FAILURE, error});
+
+export const deleteUserSuccess = () => ({type: DELETE_USER_SUCCESS});
+export const deleteUserFailure = error => ({type: DELETE_USER_FAILURE, error});
 
 export const registerUser = userData => {
 	return async dispatch => {
@@ -93,6 +110,45 @@ export const editUser = userData => {
 			dispatch(push('/'));
 		} catch (error) {
 			dispatch(loginUserFailure(error.response.data));
+		}
+	}
+};
+
+export const fetchUsers = () => {
+	return async dispatch => {
+		try {
+			dispatch(fetchUsersRequest());
+			const response = await axiosApi.get('/users');
+			dispatch(fetchUsersSuccess(response.data));
+		} catch (error) {
+			dispatch(fetchUsersFailure(error.response.data));
+		}
+	}
+};
+
+export const fetchUser = id => {
+	return async dispatch => {
+		try {
+			dispatch(fetchUserRequest());
+			const response = await axiosApi.get(`/users/${id}`);
+			dispatch(fetchUserSuccess(response.data));
+		} catch (error) {
+			dispatch(fetchUserFailure(error));
+		}
+	}
+};
+
+export const deleteUser = id => {
+	return async dispatch => {
+		try {
+			await axiosApi.delete(`/users/${id}`);
+			dispatch(deleteUserSuccess());
+			toast.info('Вы успешно удалили этого пользователя', {
+				position: toast.POSITION.TOP_RIGHT
+			});
+			dispatch(push('/usersList'));
+		} catch (error) {
+			dispatch(deleteUserFailure(error.response.data));
 		}
 	}
 };
