@@ -46,7 +46,7 @@ const Register = () => {
 	});
 
 	const dispatch = useDispatch();
-	const error = useSelector(state => state.users.registerError);
+	const error = useSelector(state => state.users.error);
 
 	const classes = useStyles();
 

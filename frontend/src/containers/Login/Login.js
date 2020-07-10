@@ -43,7 +43,7 @@ const Login = () => {
 	});
 
 	const dispatch = useDispatch();
-	const error = useSelector(state => state.users.loginError);
+	const error = useSelector(state => state.users.error);
 
 	const classes = useStyles();
 
