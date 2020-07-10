@@ -1,4 +1,6 @@
 import {
+	CREATE_CATEGORY_FAILURE,
+	CREATE_CATEGORY_SUCCESS,
 	DELETE_CATEGORY_FAILURE,
 	DELETE_CATEGORY_SUCCESS,
 	EDIT_CATEGORY_FAILURE,
@@ -25,6 +27,9 @@ export const editCategoryFailure = error => ({type: EDIT_CATEGORY_FAILURE, error
 
 export const deleteCategorySuccess = () => ({type: DELETE_CATEGORY_SUCCESS});
 export const deleteCategoryFailure = error => ({type: DELETE_CATEGORY_FAILURE, error});
+
+export const createCategorySuccess = () => ({type: CREATE_CATEGORY_SUCCESS});
+export const createCategoryFailure = error => ({type: CREATE_CATEGORY_FAILURE, error});
 
 export const fetchCategories = () => {
 	return async dispatch => {
@@ -76,6 +81,21 @@ export const deleteCategory = id => {
 			dispatch(push('/categories'));
 		} catch (error) {
 			dispatch(deleteCategoryFailure(error));
+		}
+	}
+};
+
+export const createCategory = categoryData => {
+	return async dispatch => {
+		try {
+			await axiosApi.post('/categories', categoryData);
+			dispatch(createCategorySuccess());
+			toast.info('Вы успешно создали категорию', {
+				position: toast.POSITION.TOP_RIGHT
+			});
+			dispatch(push('/categories'));
+		} catch (error) {
+			dispatch(createCategoryFailure(error));
 		}
 	}
 };

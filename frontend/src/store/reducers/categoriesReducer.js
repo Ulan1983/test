@@ -1,4 +1,5 @@
 import {
+	CREATE_CATEGORY_FAILURE,
 	DELETE_CATEGORY_FAILURE,
 	EDIT_CATEGORY_FAILURE,
 	FETCH_CATEGORIES_FAILURE,
@@ -32,6 +33,8 @@ const categoriesReducer = (state = initialState, action) => {
 		case EDIT_CATEGORY_FAILURE:
 			return {...state, error: action.error};
 		case DELETE_CATEGORY_FAILURE:
+			return {...state, error: action.error};
+		case CREATE_CATEGORY_FAILURE:
 			return {...state, error: action.error};
 		default:
 			return state;
