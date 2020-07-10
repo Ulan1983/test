@@ -6,6 +6,7 @@ import thunkMiddleware from "redux-thunk";
 import {loadFromLocalStorage, localStorageMiddleware} from "./localStorage";
 import usersReducer from "./reducers/usersReducer";
 import toggleDrawerReducer from "./reducers/toggleDrawerReducer";
+import categoriesReducer from "./reducers/categoriesReducer";
 
 export const history = createBrowserHistory();
 
@@ -14,6 +15,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
 	router: connectRouter(history),
 	users: usersReducer,
+	categories: categoriesReducer,
 	toggleDrawer: toggleDrawerReducer,
 });
 
