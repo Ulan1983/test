@@ -15,10 +15,12 @@ const run = async () => {
 		username: 'user',
 		password: '123456',
 		token: '123456',
+		role: 'user'
 	}, {
-		username: 'user2',
+		username: 'admin',
 		password: '123456',
 		token: '123456',
+		role: 'admin'
 	});
 
 
