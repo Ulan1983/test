@@ -7,14 +7,10 @@ import TextField from "@material-ui/core/TextField";
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -68,12 +64,22 @@ const useStyles = makeStyles((theme) => ({
 
 const FormElement = props => {
 	const classes = useStyles();
+	let inputChildren = undefined;
+
+	if (props.type === 'select') {
+		inputChildren = props.options.map(o => (
+			<MenuItem key={o.id} value={o.id}>
+				{o.title}
+			</MenuItem>
+		));
+	}
 
 	let field = <TextField
 		disabled={props.disabled}
 		className={classes.root}
 		label={props.title}
 		variant="outlined"
+		select={props.type === 'select'}
 		error={!!props.error}
 		type={props.type}
 		name={props.propertyName}
@@ -84,7 +90,7 @@ const FormElement = props => {
 		autoComplete={props.autoComplete}
 		placeholder={props.placeholder}
 		defaultValue={props.defaultValue}
-	/>;
+	>{inputChildren}</TextField>;
 
 	if (props.type === 'search') {
 		field = <div className={classes.search}>
@@ -147,27 +153,6 @@ const FormElement = props => {
 					</div>
 				</label>
 			</>
-		)
-	}
-
-	if (props.type === 'select') {
-		field = (
-			<FormControl variant="filled" className={classes.select}>
-				<InputLabel htmlFor="role">{props.title}</InputLabel>
-				<Select
-					id='role'
-					variant="outlined"
-					value={props.value}
-					onChange={props.onChange}
-					name={props.propertyName}
-					label={props.title}
-					fullWidth
-				>
-					{props.options.map(option => (
-						<MenuItem id={option+'Option'} value={option} key={option}>{option}</MenuItem>
-					))}
-				</Select>
-			</FormControl>
 		)
 	}
 
