@@ -11,6 +11,7 @@ import UserInfo from "./containers/UserInfo/UserInfo";
 import CategoriesList from "./containers/CategoriesList/CategoriesList";
 import CategoryInfo from "./containers/CategoryInfo/CategoryInfo";
 import NewCategory from "./containers/NewCategory/NewCategory";
+import EditCategory from "./containers/EditCategory/EditCategory";
 
 
 const ProtectedRoute = ({isAllowed, ...props}) => (
@@ -26,6 +27,7 @@ const Routes = () => {
 			<AppToolbar/>
 			<Switch>
 				<ProtectedRoute isAllowed={user} path="/" exact component={MainPage}/>
+				<ProtectedRoute isAllowed={user} path="/categoryTitle/:id" exact component={MainPage}/>
 				<Route path="/register" exact component={Register}/> />
 				<Route path="/login" exact component={Login}/> />
 				<ProtectedRoute isAllowed={user} path="/profile" exact component={EditUser}/>
@@ -34,6 +36,7 @@ const Routes = () => {
 				<ProtectedRoute isAllowed={user} path="/categories" exact component={CategoriesList}/>
 				<ProtectedRoute isAllowed={user} path="/category/new" exact component={NewCategory}/>
 				<ProtectedRoute isAllowed={user} path="/category/:id" exact component={CategoryInfo}/>
+				<ProtectedRoute isAllowed={user} path="/category/edit/:id" exact component={EditCategory}/>
 			</Switch>
 		</>
 	);

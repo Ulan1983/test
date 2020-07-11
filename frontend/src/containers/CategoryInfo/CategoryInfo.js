@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Modal from "../../components/UI/Modal/Modal";
 import {makeStyles} from "@material-ui/core/styles";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles({
 	grid: {
@@ -48,6 +49,12 @@ const CategoryInfo = props => {
 					<CardContent>
 						<b>Название: </b>{singleCategory.title}
 					</CardContent>
+					<Grid item>
+						<Button color="inherit" variant="outlined"
+								className={classes.btn} component={NavLink} to={`/category/edit/${singleCategory._id}`}>
+							Редактировать
+						</Button>
+					</Grid>
 					{user && user.role === 'admin' &&
 					<Grid item>
 						<Button color="secondary" variant="outlined"
