@@ -17,7 +17,6 @@ import CardActions from "@material-ui/core/CardActions/CardActions";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
-import apiURL from "../../apiURL";
 
 const useStyles = makeStyles({
 	grid: {
@@ -30,6 +29,9 @@ const useStyles = makeStyles({
 	media: {
 		height: 200,
 	},
+	gridBtn: {
+		textAlign: 'center'
+	}
 });
 
 const MainPage = props => {
@@ -51,7 +53,6 @@ const MainPage = props => {
 		dispatch(fetchArticles(props.match.params.id));
 		dispatch(fetchCategories());
 	}, [dispatch, props.match.params.id]);
-
 
 
 	return (
@@ -83,6 +84,11 @@ const MainPage = props => {
 					))}
 				</List>
 			</Menu>
+			<Grid item className={classes.gridBtn}>
+				<Button color="primary" component={NavLink} to="/article/new">
+					Добавить статью
+				</Button>
+			</Grid>
 			<Grid container direction="column" spacing={2}>
 				<Grid container>
 					{articles && articles.map(article => (
@@ -91,7 +97,7 @@ const MainPage = props => {
 								<CardContent>
 									<CardMedia
 										className={classes.media}
-										image={apiURL.url + article.image}
+										image={article.image ? `http://localhost:8000/uploads/articleImage/${article.image}` : ''}
 										title={article.title}
 									/>
 									<Typography color="textSecondary" gutterBottom>
