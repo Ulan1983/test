@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 	},
 	media: {
 		height: 200,
+		marginBottom: '1%'
 	},
 });
 

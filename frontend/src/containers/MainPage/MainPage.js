@@ -8,7 +8,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from "@material-ui/core/Menu";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
 import {NavLink} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card/Card";
@@ -28,6 +27,7 @@ const useStyles = makeStyles({
 	},
 	media: {
 		height: 200,
+		marginBottom: '2%'
 	},
 	gridBtn: {
 		textAlign: 'center'
@@ -72,7 +72,6 @@ const MainPage = props => {
 								  style={{fontSize: 'bold'}} button>
 							Все
 						</ListItem>
-						<Divider/>
 					</div>
 					{categories && categories.map((elem, idx) => (
 						<div key={idx}>
