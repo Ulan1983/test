@@ -97,8 +97,7 @@ const MainPage = props => {
 									<CardMedia
 										className={classes.media}
 										image={article.image ?
-											`http://localhost:8000/uploads/articleImage/${article.image}` &&
-											`http://localhost:8000/uploads/fixtures/${article.image}`
+											`http://localhost:8000/uploads/articleImage/${article.image}`
 											: ''}
 										title={article.title}
 									/>

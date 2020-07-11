@@ -56,8 +56,7 @@ const ArticleInfo = props => {
 						<CardMedia
 							className={classes.media}
 							image={singleArticle.image ?
-								`http://localhost:8000/uploads/articleImage/${singleArticle.image}` &&
-								`http://localhost:8000/uploads/fixtures/${singleArticle.image}`
+								`http://localhost:8000/uploads/articleImage/${singleArticle.image}`
 								: ''}
 							title={singleArticle.title}
 						/>
