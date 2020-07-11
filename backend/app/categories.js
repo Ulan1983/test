@@ -60,7 +60,7 @@ router.delete('/:id', [auth, permit('admin')], async (req, res) => {
 	}
 });
 
-router.put('/:id', auth, async (req, res) => {
+router.put('/edit/:id', auth, async (req, res) => {
 	try {
 		const categoryData = req.body;
 		const category = await Category.findOne({_id: req.params.id});

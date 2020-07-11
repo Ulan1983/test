@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const users = require('./app/users');
 const categories = require('./app/categories');
+const articles = require('./app/articles');
 const datas = require('./app/datas');
 
 const app = express();
@@ -18,6 +19,7 @@ const run = async () => {
 
 	app.use('/users', users);
 	app.use('/categories', categories);
+	app.use('/articles', articles);
 	app.use('/datas', datas);
 
 

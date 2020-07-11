@@ -2,6 +2,7 @@ const express = require('express');
 
 const User = require('../models/User');
 const Category = require('../models/Category');
+const Article = require('../models/Article');
 
 const router = express.Router();
 
@@ -20,6 +21,16 @@ router.get('/categories', async (req, res) => {
 		const categories = await Category.find();
 
 		res.send(JSON.stringify(categories));
+	} catch (e) {
+		return res.status(500).send(e);
+	}
+});
+
+router.get('/articles', async (req, res) => {
+	try {
+		const articles = await Article.find();
+
+		res.send(JSON.stringify(articles));
 	} catch (e) {
 		return res.status(500).send(e);
 	}
