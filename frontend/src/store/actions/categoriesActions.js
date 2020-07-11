@@ -38,7 +38,7 @@ export const fetchCategories = () => {
 			const response = await axiosApi.get('/categories');
 			dispatch(fetchCategoriesSuccess(response.data));
 		} catch (error) {
-			dispatch(fetchCategoriesFailure(error.response.data));
+			dispatch(fetchCategoriesFailure(error));
 		}
 	}
 };
@@ -58,8 +58,9 @@ export const fetchCategory = id => {
 export const editCategory = (id, categoryData) => {
 	return async dispatch => {
 		try {
-			await axiosApi.put(`/categories/${id}`, categoryData);
+			await axiosApi.put(`/categories/edit/${id}`, categoryData);
 			dispatch(editCategorySuccess());
+
 			toast.info('Вы успешно отредактировали категорию', {
 				position: toast.POSITION.TOP_RIGHT
 			});

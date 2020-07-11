@@ -7,6 +7,7 @@ import {loadFromLocalStorage, localStorageMiddleware} from "./localStorage";
 import usersReducer from "./reducers/usersReducer";
 import toggleDrawerReducer from "./reducers/toggleDrawerReducer";
 import categoriesReducer from "./reducers/categoriesReducer";
+import articlesReducer from "./reducers/articlesReducer";
 
 export const history = createBrowserHistory();
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 	router: connectRouter(history),
 	users: usersReducer,
 	categories: categoriesReducer,
+	articles: articlesReducer,
 	toggleDrawer: toggleDrawerReducer,
 });
 
