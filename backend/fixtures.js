@@ -45,31 +45,31 @@ const run = async () => {
 	await Article.create({
 		title: 'Трамп запретил иммиграцию',
 		description: 'Президент США Д. Трамп продлил запрет на въезд на территорию США для обладателей иммиграционных и рабочих виз',
-		image: 'uploads/articleImage/images (3).jpeg',
+		image: 'images (3).jpeg',
 		category: cat1,
 		user: user1
 	}, {
 		title: 'Лига Чемпионов',
 		description: 'Состоялась жеребьевка плей офф лиги чемпионов УЕФА',
-		image: 'uploads/articleImage/football.jpg',
+		image: 'football.jpg',
 		category: cat2,
 		user: user2
 	}, {
 		title: 'Вакцина',
 		description: 'Создание вакцины от COVID-19 продолжается в нескольких странах',
-		image: 'uploads/articleImage/medic.jpg',
+		image: 'medic.jpg',
 		category: cat3,
 		user: user3
 	}, {
 		title: 'Погода',
 		description: 'В Японии продолжает бушевать непогода. Жертвами наводнения стали сотни человек',
-		image: 'uploads/articleImage/japan.jpg',
+		image: 'japan.jpg',
 		category: cat4,
 		user: user1
 	}, {
 		title: 'Культура',
 		description: 'Культурная жизнь в России потихоньку начинает оживать',
-		image: 'uploads/articleImage/rus.jpeg',
+		image: 'rus.jpeg',
 		category: cat5,
 		user: user2
 	});

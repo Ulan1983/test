@@ -29,7 +29,7 @@ router.get('/', auth, async (req, res) => {
 
 router.get('/:id', auth, async (req, res) => {
 	try {
-		const article = await Article.findOne({_id: req.params.id}).populate('category');
+		const article = await Article.findOne({_id: req.params.id}).populate('category').populate('user');
 
 		if (!article) {
 			return res.status(404).send({error: 'Не найдено'});
