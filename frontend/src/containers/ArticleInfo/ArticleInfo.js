@@ -55,7 +55,10 @@ const ArticleInfo = props => {
 					<CardContent>
 						<CardMedia
 							className={classes.media}
-							image={singleArticle.image ? `http://localhost:8000/uploads/articleImage/${singleArticle.image}` : ''}
+							image={singleArticle.image ?
+								`http://localhost:8000/uploads/articleImage/${singleArticle.image}` &&
+								`http://localhost:8000/uploads/fixtures/${singleArticle.image}`
+								: ''}
 							title={singleArticle.title}
 						/>
 						<Typography variant="h6"><b>Название: </b>{singleArticle.title}</Typography>
@@ -65,7 +68,7 @@ const ArticleInfo = props => {
 					</CardContent>
 					<Grid item>
 						<Button color="inherit" variant="outlined"
-								className={classes.btn} component={NavLink} to={`/category/edit/${singleArticle._id}`}>
+								className={classes.btn} component={NavLink} to={`/article/edit/${singleArticle._id}`}>
 							Редактировать
 						</Button>
 					</Grid>

@@ -57,7 +57,7 @@ const MainPage = props => {
 
 	return (
 		<>
-			<Typography variant='h4'>Выбрать категорию</Typography>
+			<Typography variant='h5'>Выбрать категорию</Typography>
 			<IconButton onClick={handleClick}><MenuIcon/></IconButton>
 			<Menu
 				id="simple-menu"
@@ -96,7 +96,10 @@ const MainPage = props => {
 								<CardContent>
 									<CardMedia
 										className={classes.media}
-										image={article.image ? `http://localhost:8000/uploads/articleImage/${article.image}` : ''}
+										image={article.image ?
+											`http://localhost:8000/uploads/articleImage/${article.image}` &&
+											`http://localhost:8000/uploads/fixtures/${article.image}`
+											: ''}
 										title={article.title}
 									/>
 									<Typography color="textSecondary" gutterBottom>
