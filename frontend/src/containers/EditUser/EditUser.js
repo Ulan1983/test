@@ -32,7 +32,7 @@ const EditUser = () => {
 		avatar: ''
 	});
 
-	const error = useSelector(state => state.users.loginError);
+	const error = useSelector(state => state.users.error);
 
 	const inputChangeHandler = event => {
 		setUser({...user, [event.target.name]: event.target.value})

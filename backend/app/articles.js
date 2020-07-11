@@ -95,7 +95,6 @@ router.put('/edit/:id', auth, async (req, res) => {
 
 		article.title = articleData.title;
 		article.description = articleData.description;
-		article.user = articleData.user;
 		article.category = articleData.category;
 
 		await article.save();

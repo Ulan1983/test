@@ -1,8 +1,8 @@
 node_modules
 .idea
 
-/public/uploads/userAvatar*
-/public/uploads/articleImage*
+/public/uploads/userAvatar/*
+/public/uploads/articleImage/*
 !/public/uploads/articleImage/football.jpg
 !/public/uploads/articleImage/images (3).jpeg
 !/public/uploads/articleImage/japan.jpg

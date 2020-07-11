@@ -14,6 +14,7 @@ import NewCategory from "./containers/NewCategory/NewCategory";
 import EditCategory from "./containers/EditCategory/EditCategory";
 import ArticleInfo from "./containers/ArticleInfo/ArticleInfo";
 import NewArticle from "./containers/NewArticle/NewArticle";
+import EditArticle from "./containers/EditArticle/EditArticle";
 
 
 const ProtectedRoute = ({isAllowed, ...props}) => (
@@ -41,6 +42,7 @@ const Routes = () => {
 				<ProtectedRoute isAllowed={user} path="/category/edit/:id" exact component={EditCategory}/>
 				<ProtectedRoute isAllowed={user} path="/article/new" exact component={NewArticle}/>
 				<ProtectedRoute isAllowed={user} path="/article/:id" exact component={ArticleInfo}/>
+				<ProtectedRoute isAllowed={user} path="/article/edit/:id" exact component={EditArticle}/>
 			</Switch>
 		</>
 	);
